@@ -30,13 +30,13 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        sh "echo y | scp -i /home/jenkins/Shabanmanus2.pem **/target/*.war ec2-user@${params.tomcat_dev}:/home/ec2-user"
+                        sh "echo y | scp -i /home/jenkins/Shabanmanus2.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
-                        sh "echo y | scp -i /home/jenkins/Shabanmanus2.pem **/target/*.war ec2-user@${params.tomcat_prod}:/home/ec2-user"
+                        sh "echo y | scp -i /home/jenkins/Shabanmanus2.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
                     }
                 }
             }
